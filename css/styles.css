@@ -1,0 +1,137 @@
+body {
+  font-family: "Lexend", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 36px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  text-align: center;
+  padding: 20px;
+}
+
+.poster img {
+  width: 300px;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.show-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.calendar-header span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.bookgrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.bookgrid .date {
+  background-color: #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.bookgrid .date.unavailable {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.bookgrid .date.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.book-now-button {
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-family: "Lexend", sans-serif;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+  border: none;
+}
+
+.book-now-button:enabled {
+  cursor: pointer;
+  background-color: #007bff;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* No background */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: lightgray; /* Light gray color */
+  border-radius: 10px; /* Rounded edges */
+  border: 3px solid transparent; /* Space around the thumb */
+  background-clip: content-box; /* Clip the background to show border */
+}
