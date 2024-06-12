@@ -320,32 +320,34 @@
             .map((seat) => String.fromCharCode(65 + seat.row) + (seat.col + 1))
             .join(", ");
 
-          const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-          await fetch(webhookUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              embeds: [
-                {
-                  title: "New Booking - 1st August",
-                  fields: [
-                    { name: "Name", value: name },
-                    { name: "Email", value: email },
-                    { name: "Seats", value: seatList },
-                  ],
-                  color: 3066993,
+          try {
+            const response = await fetch(
+              "/.netlify/functions/send-discord-webhook",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
                 },
-              ],
-            }),
-          });
+                body: JSON.stringify({
+                  name,
+                  email,
+                  seats: seatList,
+                }),
+              }
+            );
 
-          alert(`You have booked ${selectedSeats.length} seats.`);
-          selectedSeats = [];
-          updateSeats();
-          overlay.style.display = "none";
-          popup.style.display = "none";
+            if (response.ok) {
+              alert(`You have booked ${selectedSeats.length} seats.`);
+              selectedSeats = [];
+              updateSeats();
+              overlay.style.display = "none";
+              popup.style.display = "none";
+            } else {
+              alert("Failed to book seats.");
+            }
+          } catch (error) {
+            alert("Failed to book seats.");
+          }
         } else {
           alert("No seats selected!");
         }
