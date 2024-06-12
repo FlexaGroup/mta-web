@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const endDate = new Date('2024-08-02');
     let selectedDate = null;
 
-    const daysInJuly = new Date(2024, 6, 0).getDate(); // July is month 6 (zero-based index)
-    const daysInAugust = new Date(2024, 7, 0).getDate(); // August is month 7
+    const daysInJuly = new Date(2024, 7, 0).getDate(); // July is month 6 (zero-based index)
+    const daysInAugust = new Date(2024, 8, 0).getDate(); // August is month 7
 
     function createGrid() {
         // Create July dates
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 createDisabledDayElement('2024-07', i);
             }
         }
-        // Add a line break for August if July ends on the 31st
-        if (daysInJuly === 31) {
+        // Add breaks between months
+        for (let i = 0; i < 1; i++) {
             bookGrid.appendChild(document.createElement('br'));
         }
         // Create August dates
