@@ -323,8 +323,7 @@
             .map((seat) => String.fromCharCode(65 + seat.row) + (seat.col + 1))
             .join(", ");
 
-          const webhookUrl =
-            "https://discord.com/api/webhooks/1249783588124098624/T-vTEvBmjfVnFjHRn3gaYVhcrKqzKwfug4NDndRufiR9NMNu1Jtwrd6gcskPrFm9nEv2"; // Add your Discord webhook URL here
+          const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
           await fetch(webhookUrl, {
             method: "POST",
             headers: {
